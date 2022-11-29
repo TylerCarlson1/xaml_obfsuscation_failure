@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
+  </ItemGroup>
+
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+  <Import Project="$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))/.dotfuscator.user.props" Condition="Exists('$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))/.dotfuscator.user.props')" />
+
+  <PropertyGroup>
+    <_DotfuscatorAIMSetting>automatic</_DotfuscatorAIMSetting>
+    <DotfuscatorMSBuildDir Condition="'$(DotfuscatorMSBuildDir)' == ''">$(MSBuildProgramFiles32)/MSBuild/PreEmptive/Dotfuscator/6</DotfuscatorMSBuildDir>
+    <DotfuscatorIncludeAsInput>true</DotfuscatorIncludeAsInput>
+    <DotfuscatorGenerateConfigFileIfMissing>true</DotfuscatorGenerateConfigFileIfMissing>
+    <DotfuscatorEnabled Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">true</DotfuscatorEnabled>
+  </PropertyGroup>
+
+  <Import Project="$(DotfuscatorMSBuildDir)/PreEmptive.Dotfuscator.Common.targets" />
+
+</Project>
