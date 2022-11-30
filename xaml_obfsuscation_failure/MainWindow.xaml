@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" SizeToContent="WidthAndHeight">
     <Grid>
-        <xctk:IntegerUpDown/>
+        <xctk:IntegerUpDown Maximum="10"/>
     </Grid>
 </Window>
